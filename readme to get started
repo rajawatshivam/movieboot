@@ -1,0 +1,69 @@
+Commands to run in docker 
+
+1. Clone the file
+2. Open terminal in this folder
+3. Type sudo docker ps to check the running services. 
+4. For this you will need mysql version 5.5
+5. Check if mysql comes in sudo docker ps;
+6. If not then install mysql through "sudo docker pull mysql:5.5"
+7. It will install after a while
+8. sudo docker run -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v /home/user/mysql:/var/lib/mysql -d mysql:5.5   (we need to port mapping and give environment variable and local directory)
+9. Then create the image of the file by typing "sudo docker build -t <ur application name>:<tag> ." 
+10. Again check sudo docker images to check whether image is created or not
+11. After this  "sudo docker run movieapp:1.0" to run the image
+12. Now open another terminal and type "mysql -h 124.14.218.100 -u root -p"   (the number is the ip address)
+13. password is not set so jst hit enter
+14. create a databases name moviedb;
+15. Now go to postman and try to access it.
+16. You wont be able to because again you need to replace localhost with the ip address. so give the ipaddress 
+17. Try to perform operation in postman.
+18. Two rows will automatically be inserted because you are predifining it in the bootstrap class file.
+19. Try to check in the other terminal by accessing the table "select * from tablename;"
+20. You are good to go
+
+
+To submit your own docker image into the docker site
+----------------------------------------------------
+1.Create an account
+then open terminal
+	sudo docker login --username {username}
+	give password 
+	sudo docker images(to get image id)
+	sudo docker tag (image id) <userid/imagename> 
+	sudo docker push <userid/imagename>
+
+
+To open the mysql
+------------------
+sudo docker run -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=true -d mysql:5.5
+
+
+
+For clean compiling through terminal
+----------------------------------------
+open the directory where pom is present
+clean package
+java -jar target/{jar file name}.jar
+----------------------------------------
+
+
+To check for id
+----------------------
+docker logs containerId 
+docker logs ps -Id
+
+
+
+To stop a service
+------------------
+sudo docker ps;
+You will get a Id or name;
+sudo docker stop id or name; sudo docker stop wonderful-elion
+again check sudo docker ps;
+
+
+To get images
+---------------
+sudo docker images;
+
+
